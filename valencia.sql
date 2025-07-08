@@ -26,5 +26,10 @@ CREATE TABLE user_sessions (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
+-- Create database user
+CREATE USER IF NOT EXISTS 'elfos'@'localhost' IDENTIFIED BY 'password';
+GRANT SELECT, INSERT, UPDATE, DELETE ON valencia.* TO 'elfos'@'localhost';
+FLUSH PRIVILEGES;
+
 -- Display initial data
 SELECT * FROM users;
